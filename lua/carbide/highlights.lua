@@ -69,13 +69,13 @@ return {
   --Directory -Directory names (and other special names in listings).
   Directory = {},
   --DiffAdd - Diff mode: Added line. |diff.txt|
-  DiffAdd = {},
+  DiffAdd = { bg = p.green_3, fg = p.bg_1 },
   --DiffChange - Diff mode: Changed line. |diff.txt|
-  DiffChange = {},
+  DiffChange = { bg = p.blue_4, fg = p.bg_1 },
   --DiffDelete - Diff mode: Deleted line. |diff.txt|
-  DiffDelete = {},
+  DiffDelete = { bg = p.red_3, fg = p.bg_1 },
   --DiffText - Diff mode: Changed text within a changed line. |diff.txt|
-  DiffText = {},
+  DiffText = { link = "DiffChange", bold = true},
   --ErrorMsg - Error messages on the command line.
   ErrorMsg = {},
   --WinSeparator - Separators between window splits.
@@ -157,17 +157,22 @@ return {
   DiagnosticError  = { fg = p.red_3 },
   DiagnosticVirtualTextError = { fg = p.red_2, bg = p.red_8 },
 
-  -- Telescope
-  -- TelescopeNormal
-  TelescopePromptPrefix = { fg = p.cyan_2 },
-
-  TelescopeBorder = { fg = p.bg_3 },
-  TelescopeSelection = { link = 'CursorColumn'},
-  TelescopeMatching = { fg = p.blue_2 },
+  TelescopeNormal = { bg = p.bg_2 },
+  TelescopeBorder = { fg = p.bg_2, bg = p.bg_2 },
+  TelescopePromptBorder = { fg = p.bg_3, bg = p.bg_3  },
   TelescopePromptTitle = { bg = p.cyan_2, fg = p.bg_1 },
-  TelescopeResultsTitle = { bg = p.purple_4, fg = p.bg_1 },
-  TelescopeResultsNormal = { fg = p.fg_4 },
-  TelescopePreviewTitle = { bg = p.red_3, fg = p.bg_1 },
+  TelescopePromptPrefix = { fg = p.cyan_2 },
+  TelescopePromptNormal = { bg = p.bg_3 },
+  TelescopePromptCounter = { fg = p.fg_4 },
+  TelescopePreviewTitle = { bg = p.red_3, fg = p.bg_3 },
+  TelescopeResultsTitle = { bg = p.blue_4, fg = p.bg_1 },
+  TelescopeResultsNormal = { fg = p.fg_3, bg = p.bg_2 },
+  TelescopeResultsDiffChange = { link = "GitSignsChange" },
+  TelescopeResultsDiffAdd = { link = "GitSignsAdd" },
+  TelescopeResultsDiffDelete = { link = "GitSignsDelete" },
+  TelescopeMatching = { fg = p.blue_3 },
+  TelescopeSelection = { link = 'CursorColumn'},
+  TelescopeSelectionCaret = { fg = p.blue_2 },
   --
   -- Git Signs
   GitSignsAdd = { fg = p.cyan_4 },
