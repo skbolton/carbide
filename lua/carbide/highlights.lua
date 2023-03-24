@@ -1,14 +1,10 @@
 local p = require 'carbide.palette'
 
--- == COMMON GROUPS ==
--- Generated with `:help E669`
---
--- Nested descriptions fallback to parent rule
 return {
   -- TODO: italics 
-  Comment = { fg = p.bg_4 },
+  Comment = { fg = p.bg_6, italic = true },
   Constant = { fg = p.purple_5},
-  ["@constant.builtin"] = {fg = p.purple_4, bold = true},
+  ["@constant.builtin"] = {fg = p.blue_3, bold = true},
   String = { fg = p.purple_2},
   ["@string.special"] = { fg = p.cyan_3 },
   ["@string.escape"] = { fg = p.blue_2  },
@@ -16,26 +12,45 @@ return {
   Number = {},
   Float = {},
   Identifier = {},
-  Function = { fg = p.red_2 },
+  ["@variable"] = { fg = p.fg_1 },
+  ["@variable.builtin"] = { fg = p.blue_3, bold = true },
+  Function = { fg = p.magenta_2 },
   ["@function"] = { link = "Function" },
-  ["@function.builtin"] = { fg = p.red_3, bold = true},
-  ["@function.call"] = { fg = p.blue_1 },
-  ["@symbol"] = { fg = p.cyan_1 },
+  ["@function.builtin"] = { fg = p.magenta_3, bold = true},
+  ["@function.call"] = { fg = p.blue_2 },
+  -- ["@symbol"] = { fg = p.cyan_1 },
+  ["@symbol"] = { fg = p.magenta_0 },
+  -- ["@symbol"] = { fg = p.purple_3  },
   ["@field"] = { fg = p.purple_1 },
+  ["@property"] = { fg = p.purple_1 },
+  ["@text.literal"] =  { fg = p.purple_4 },
+  ["@text.uri"] =  { fg = p.blue_2 },
+  ["@text.reference"] = { fg = p.blue_3, bold = true },
+  ["@text.strong"]  = {bold = true},
+  ["@text.emphasis"]  = { italic = true},
+  ["@text.todo.unchecked"]  = { fg = p.cyan_3, bold = true},
+  ["@text.todo.checked"]  = { link = "Comment", bold = true },
+  ["@text.note"] = { link = "DiagnosticVirtualTextHint", bold = true },
+  ["@text.todo"] = { link = "DiagnosticVirtualTextWarn", bold = true },
   --   Conditional if, then, else, endif, switch, etc.
   --   Repeat  for, do, while, etc.
   --   Label  case, default, etc.
-  -- NOTE: One I first had
-  Operator = { fg = p.red_1 },
+  Operator = { fg = p.magenta_3 },
   ["@conditional"] = { fg = p.cyan_2, bold = true},
   ["@punctuation.bracket"] = { fg = p.purple_1 },
-  ["@punctuation.special"] = { fg = p.purple_2 },
+  -- ["@punctuation.special"] = { fg = p.purple_2 },
+  -- ["@punctuation.special"] = { fg = p.cyan_2 },
+  ["@punctuation.special"] = { fg = p.blue_1 },
   ["@punctuation.delimiter"] = { fg = p.purple_1 },
+  ["@tag"] = { link = "Keyword"},
+  ["@tag.delimiter"] = { link = "@punctuation.delimiter" },
+  -- ["@tag.attribute"] = { link = "Constant"},
+  ["@tag.attribute"] = { fg = p.blue_3 },
   Keyword = { fg = p.cyan_2 },
-  ["@keyword.function"] = { fg = p.blue_2 },
+  -- ["@keyword.function"] = { fg = p.blue_2 },
   Statement = { link = "Keyword"},
   -- * PreProc generic Preprocessor
-  PreProc = {},
+  PreProc = { fg = p.cyan_3 },
   --   Include preprocessor #include
   --   Define  preprocessor #define
   --   Macro  same as Define
@@ -45,7 +60,7 @@ return {
   --   StorageClass static, register, volatile, etc.
   --   Structure struct, union, enum, etc.
   --   Typedef A typedef
-  Special = {},
+  Special = { fg = p.cyan_1 },
   --   SpecialChar special character in a constant
   --   Tag  you can use CTRL-] on this
   --   Delimiter character that needs attention
@@ -102,10 +117,10 @@ return {
   --hi! link MoreMsg ModeMsg
   --NonText - '@' at the end of the window, characters from 'showbreak'
   -- EndOfBuffer	Filler lines (~) after the end of the buffer.
-  NonText = { link = "Comment"},
+  NonText = { fg = p.bg_4 },
   EndOfBuffer = { link = "NonText"},
   --Normal - Normal text.
-  Normal = {bg = p.bg_1, fg = p.fg_3},
+  Normal = {bg = p.bg_1, fg = p.purple_0},
   --NormalFloat - Normal text in floating windows.
   --Pmenu - Popup menu: Normal item.
   Pmenu = { bg = p.bg_2 },
@@ -134,10 +149,14 @@ return {
   --TabLineSel Tab pages line, active tab page label.
   TabLineSel = { bg = p.bg_2 },
   -- Title - Titles for output from ":set all", ":autocmdetc.
-  Title = { fg = p.purple_3 },
+  -- Title = { fg = p.magenta_3 },
+  -- Title = { fg = p.purple_4 },
+  Title = { fg = p.cyan_3 },
   -- Visual - Visual mode selection.
-  Visual = { bg = p.bg_2 },
+  -- Visual = { bg = p.bg_2 },
   -- Visual = { bg = p.bg_3 },
+  -- Visual = { bg = p.purple_4, fg = p.bg_1 },
+  Visual = { bg = p.magenta_3, fg = p.bg_1 },
   -- VisualNOS - Visual mode selection when vim is "Not Owning the Selection".
   -- WarningMsg - Warning messages.
   WarningMsg = {},
@@ -154,8 +173,9 @@ return {
   DiagnosticFloatingHint = {},
   DiagnosticWarn = {  fg = p.purple_3 },
   DiagnosticVirtualTextWarn  = { fg = p.purple_3, bg = p.purple_8 },
-  DiagnosticError  = { fg = p.red_3 },
-  DiagnosticVirtualTextError = { fg = p.red_2, bg = p.red_8 },
+  DiagnosticError  = { fg = p.magenta_3 },
+  -- DiagnosticVirtualTextError = { fg = p.magenta_2, bg = p.magenta_8 },
+  DiagnosticVirtualTextError = { fg = p.magenta_2, bg = p.magenta_7 },
 
   TelescopeNormal = { bg = p.bg_2 },
   TelescopeBorder = { fg = p.bg_2, bg = p.bg_2 },
@@ -164,7 +184,7 @@ return {
   TelescopePromptPrefix = { fg = p.cyan_2 },
   TelescopePromptNormal = { bg = p.bg_3 },
   TelescopePromptCounter = { fg = p.fg_4 },
-  TelescopePreviewTitle = { bg = p.red_3, fg = p.bg_3 },
+  TelescopePreviewTitle = { bg = p.magenta_3, fg = p.bg_3 },
   TelescopeResultsTitle = { bg = p.blue_4, fg = p.bg_1 },
   TelescopeResultsNormal = { fg = p.fg_3, bg = p.bg_2 },
   TelescopeResultsDiffChange = { link = "GitSignsChange" },
@@ -175,9 +195,27 @@ return {
   TelescopeSelectionCaret = { fg = p.blue_2 },
   --
   -- Git Signs
-  GitSignsAdd = { fg = p.cyan_4 },
+  GitSignsAdd = { fg = p.cyan_3 },
   GitSignsChange = { fg = p.purple_4 },
-  GitSignsDelete = { fg = p.red_3 },
+  GitSignsDelete = { fg = p.magenta_3 },
+  -- Cmp
+  CmpItemMenu = { link = "Comment" },
+  CmpItemKindDefault = { fg = p.purple_2 },
+  cmpItemAbbrMatch = { link = "Pmenu" },
+  CmpItemKindDefault = { link = "Pmenu" },
+  CmpItemKindFunction = { link = "Function" },
+  CmpItemKindMethod = { link = "CmpItemKindFunction" },
+  CmpItemKindModule = { link = "PreProc" },
+  CmpItemKindStruct = { link = "CmpItemKindModule" },
+  CmpItemKindText = { link = "Comment" },
+  CmpItemKindVariable = { fg = p.fg_1 },
+  CmpItemKindSnippet = { link = "Constant" },
+  CmpItemKindReference = { link = "CmpItemKindDefault" },
+  CmpItemKindInterface = { link = "CmpItemKindDefault" },
+  
+  -- fugitive
+  diffAdded = { link = "GitSignsAdd" },
+  diffRemoved = { link = "GitSignsDelete" },
 }
 
   -- if has('nvim-0.8')
